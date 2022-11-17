@@ -65,14 +65,17 @@ model Category {
 }
 
 model User {
-    id            String     @id @default(cuid())
-    name          String?
-    email         String?    @unique
-    emailVerified DateTime?
-    image         String?
-    accounts      Account[]
-    sessions      Session[]
-    Category      Category[]
+    id               String     @id @default(cuid())
+    name             String?
+    email            String?    @unique
+    emailVerified    DateTime?
+    image            String?
+    accounts         Account[]
+    sessions         Session[]
+    Category         Category[]
+    inWaitList       Boolean    @default(true)
+    waitlistPosition Int?       @default(0)
+    giftSlug         String?
 }
 
 model VerificationToken {
