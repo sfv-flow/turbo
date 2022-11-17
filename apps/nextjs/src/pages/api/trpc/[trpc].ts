@@ -3,8 +3,8 @@ import { createNextApiHandler } from "@trpc/server/adapters/next";
 
 // export API handler
 export default createNextApiHandler({
-  router: appRouter,
-  createContext,
+	router: appRouter,
+	createContext,
 });
 
 // If you need to enable cors, you can do so like this:
