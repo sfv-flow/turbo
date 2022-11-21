@@ -4,10 +4,7 @@ import { useState } from "react";
 const SideBar = () => {
 	const [sideBarOpen, setSideBarOpen] = useState(true);
 	return (
-		<div
-			className="fixed flex h-full min-h-full w-full flex-row overflow-hidden pr-[env(safe-area-inset-right,0px)] pl-[env(safe-area-inset-left,0px)] text-[#eeeffc] [border-top:none] lg:static lg:z-auto"
-			style={{ WebkitBoxAlign: "stretch" }}
-		>
+		<>
 			{sideBarOpen && <div className="fixed inset-0 z-[1] bg-transparent" />}
 			<nav
 				className={clsx(
@@ -101,7 +98,7 @@ const SideBar = () => {
 										WebkitFlex: 1,
 									}}
 								>
-									{`Search of enter URL`}
+									{`Search or Enter URL...`}
 								</div>
 							</button>
 						</div>
@@ -124,7 +121,7 @@ const SideBar = () => {
 					</svg>
 				</button>
 			</nav>
-		</div>
+		</>
 	);
 };
 
