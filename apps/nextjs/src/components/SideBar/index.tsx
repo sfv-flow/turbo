@@ -12,10 +12,10 @@ const SideBar = () => {
 			<nav
 				className={clsx(
 					"absolute top-0 bottom-0 z-[2] box-border flex h-full w-[220px] min-w-[250px] max-w-[362px] flex-shrink-0 select-none flex-col shadow-[rgba(0,_0,_0,_0.07)_0px_0px_16px] backdrop-filter-none [border-right:1px_solid_#EFF1F4] [transition:left_0.25s_ease-out_0s,box-shadow_0.15s_0s] lg:relative lg:min-w-[220px] lg:max-w-[330px] lg:shadow-none lg:[transition:opacity_0.05s_ease-in-out_0s]",
-					!sideBarOpen ? "-left-[362px]" : "left-0 ",
+					!sideBarOpen ? "-left-[362px]" : "left-0",
 				)}
 			>
-				{/* First Section */}
+				{/* First Section - user workspace and and avatar */}
 				<div
 					className="mt-10 flex flex-initial flex-shrink-0 flex-col items-stretch py-3 px-5 lg:mt-0"
 					style={{ WebkitBoxAlign: "stretch" }}
@@ -66,6 +66,43 @@ const SideBar = () => {
 										className="h-full w-full flex-shrink-0 rounded-[50%]"
 									/>
 								</span>
+							</button>
+						</div>
+					</div>
+					{/* Search box */}
+					<div className="-mx-[6px] mt-[14px] mb-[2px]">
+						<div
+							className="flex min-w-0 flex-initial flex-grow select-none flex-row"
+							style={{ WebkitBoxFlex: 1 }}
+						>
+							<button
+								className="m-0 inline-flex h-9 min-w-[36px] flex-shrink-0 flex-grow select-none items-center justify-between whitespace-nowrap rounded-[4px] border border-[#dfe1e4] px-[9px] py-0 text-xs text-[#3c4149] shadow-[rgb(0_0_0_/_7%)_0px_1px_1px] [transition-property:border,_background-color,_color,_box-shadow,_opacity]"
+								draggable="false"
+								style={{ WebkitBoxFlex: 1 }}
+							>
+								<svg
+									width="16"
+									height="16"
+									viewBox="1 1 13 13"
+									fill="#6B6F76"
+									className=" mr-[10px] inline-flex max-h-[18px] max-w-[18px] items-center justify-center [transition-property:fill,_stroke] "
+								>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M9.5 7C9.5 8.38071 8.38071 9.5 7 9.5C5.61929 9.5 4.5 8.38071 4.5 7C4.5 5.61929 5.61929 4.5 7 4.5C8.38071 4.5 9.5 5.61929 9.5 7ZM9.24822 10.3089C8.60751 10.745 7.83353 11 7 11C4.79086 11 3 9.20914 3 7C3 4.79086 4.79086 3 7 3C9.20914 3 11 4.79086 11 7C11 7.83353 10.745 8.60751 10.3089 9.24822L12.7803 11.7197C13.0732 12.0126 13.0732 12.4874 12.7803 12.7803C12.4874 13.0732 12.0126 13.0732 11.7197 12.7803L9.24822 10.3089Z"
+									></path>
+								</svg>
+								<div
+									className="flex flex-initial flex-grow flex-row items-center justify-between"
+									style={{
+										WebkitBoxAlign: "center",
+										WebkitBoxPack: "justify",
+										WebkitFlex: 1,
+									}}
+								>
+									{`Search of enter URL`}
+								</div>
 							</button>
 						</div>
 					</div>
