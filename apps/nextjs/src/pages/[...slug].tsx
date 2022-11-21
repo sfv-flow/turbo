@@ -1,14 +1,11 @@
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import SideBar from "../components/SideBar";
 
 const Workspace = () => {
-	const router = useRouter();
+	// with require being true the user will be directly pushed to the login page if they are not logged in
 	const { data: session } = useSession({
 		required: true,
 	});
-	// with require being true the user will be directly pushed to the login page if they are not logged in
 	// useEffect(() => {
 	// 	if (!session) {
 	// 		router.push("/");

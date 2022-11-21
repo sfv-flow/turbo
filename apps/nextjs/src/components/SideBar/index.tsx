@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Link from "next/link";
 import { useState } from "react";
 
 const SideBar = () => {
@@ -91,7 +92,7 @@ const SideBar = () => {
 									></path>
 								</svg>
 								<div
-									className="flex flex-initial flex-grow flex-row items-center justify-between"
+									className="flex flex-initial flex-grow flex-row items-center justify-between font-medium"
 									style={{
 										WebkitBoxAlign: "center",
 										WebkitBoxPack: "justify",
@@ -106,9 +107,41 @@ const SideBar = () => {
 				</div>
 				{/* Second Section */}
 				<div
-					className="mb-[2px] flex flex-initial flex-grow flex-col overflow-y-auto px-0 py-4 [scrollbar-gutter:auto]"
+					className="mb-[2px] flex flex-initial flex-grow flex-col overflow-y-auto py-0 px-4 [scrollbar-gutter:auto]"
 					style={{ WebkitBoxFlex: 1 }}
-				></div>
+				>
+					{/* inbox */}
+					<div className="m-[1px] rounded-[4px]">
+						<div className="block flex-initial flex-row">
+							<Link href={"/"} className="block rounded-[4px] text-[#282a30]">
+								<span
+									className="flex h-[27px] flex-grow items-center overflow-hidden text-ellipsis whitespace-nowrap rounded-[4px] fill-[#6b6f76] py-0 pr-[2px] pl-[6px] text-[13px] font-medium leading-normal text-[#3c4149]"
+									style={{ WebkitBoxAlign: "center", WebkitBoxFlex: 1 }}
+								>
+									<svg
+										width="16"
+										height="16"
+										viewBox="0 0 16 16"
+										fill="#6B6F76"
+										className="mr-[10px] ml-[1px] h-auto w-4"
+									>
+										<path d="M10.5914 1C11.9984 1 13.2164 1.97789 13.5205 3.35169L14.8819 9.50233C14.9604 9.85714 15 10.2195 15 10.5829V12.5181C15 13.8888 13.8888 15 12.5181 15H3.48193C2.1112 15 1 13.8888 1 12.5181V10.5829C1 10.2195 1.03962 9.85714 1.11815 9.50233L2.47949 3.35169C2.78356 1.97789 4.00156 1 5.4086 1H10.5914ZM10.5914 2.5H5.4086C4.70508 2.5 4.09608 2.98894 3.94405 3.67584L2.5827 9.82649L2.548 10.01L5.01028 10.0108C5.55851 10.0108 6.00293 10.4552 6.00293 11.0034C6.00293 11.5517 6.44735 11.9961 6.99557 11.9961H9.05948C9.6077 11.9961 10.0521 11.5517 10.0521 11.0034C10.0521 10.4552 10.4965 10.0108 11.0448 10.0108L13.4528 10.0102C13.4426 9.94867 13.4308 9.88742 13.4173 9.82649L12.056 3.67584C11.9039 2.98894 11.2949 2.5 10.5914 2.5Z"></path>
+									</svg>
+									<div
+										className="flex flex-auto flex-row items-center justify-between"
+										style={{
+											WebkitBoxAlign: "center",
+											WebkitBoxPack: "justify",
+										}}
+									>
+										<span>Inbox</span>
+									</div>
+								</span>
+							</Link>
+						</div>
+					</div>
+				</div>
+				{/* Icon to control nav in mobile view */}
 				<button
 					style={{ WebkitBoxAlign: "center", WebkitBoxPack: "center" }}
 					className="fixed left-[env(safe-area-inset-left,0px)] top-0 m-0 inline-flex h-14 w-[52px] flex-shrink-0 items-center justify-center whitespace-nowrap rounded-[4px] pl-2 font-medium leading-normal lg:hidden"
