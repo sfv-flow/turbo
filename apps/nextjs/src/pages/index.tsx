@@ -1,6 +1,8 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { trpc } from "../utils/trpc";
+import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 const Home = () => {
 	const router = useRouter();
@@ -28,6 +30,14 @@ const Home = () => {
 };
 
 export const CreateWorkSpaceComponent = () => {
+	const {
+		register,
+		handleSubmit,
+		watch,
+		setValue,
+		formState: { errors },
+	} = useForm();
+
 	return (
 		<div className="relative flex h-full flex-initial flex-col overflow-auto bg-[#191a23]">
 			<div
@@ -48,6 +58,7 @@ export const CreateWorkSpaceComponent = () => {
 					<div className="flex flex-initial flex-col">
 						{/* create workspace form */}
 						<form>
+							{/* Workspace Name Field */}
 							<div className="mb-6">
 								<div className="text-[#eeeffc]">
 									<label className="mb-1 block pl-[2px]">
@@ -55,7 +66,34 @@ export const CreateWorkSpaceComponent = () => {
 											Workspace Name
 										</span>
 									</label>
-									<input className="transition-color m-0 h-12 w-full rounded-[4px] border border-[#393a4b] bg-[#151621] p-3 text-[0.8125rem] outline-none duration-150 focus:border-[#6C79FF] focus:shadow-none" />
+									<input
+										className="m-0 h-12 w-full rounded-[4px] border border-[#393a4b] bg-[#151621] p-3 text-[0.8125rem] outline-none transition-[border] duration-150 focus:border-[#6C79FF] focus:shadow-none"
+										{...register("workspaceName", { required: true })}
+									/>
+								</div>
+							</div>
+							<div className="mb-6 text-[#eeeffc]">
+								{/* Workspace url field */}
+								<label className="mb-1 block pl-[2px]">
+									<span className="text-left text-[0.8125rem] font-medium">
+										Workspace URL
+									</span>
+								</label>
+								<div>
+									<div className="relative items-center">
+										{/* placeholder URL */}
+										<div className="pointer-events-none absolute top-3 left-3 ">
+											<span className="text-left text-[13px] font-medium text-[#858699]">
+												{"flowapp.so"}
+												{"/"}
+											</span>
+										</div>
+										<input
+											autoComplete="off"
+											className="m-0 h-12 w-full appearance-none rounded-[4px] border border-[#393a4b] bg-[#151621] p-3 pl-[84.5547px] text-[13px] font-medium outline-none transition-[border] duration-150 focus:border-[#6C79FF] focus:shadow-none"
+											{...register("workspaceSlug", { required: true })}
+										/>
+									</div>
 								</div>
 							</div>
 						</form>
