@@ -27,12 +27,12 @@ const SideBar = () => {
 							style={{ WebkitBoxAlign: "center" }}
 						>
 							<button
-								className="m-0 flex flex-initial flex-row items-center overflow-hidden text-ellipsis whitespace-nowrap rounded-[4px] border-0 py-[6px] px-[9px] text-[#3c4149] hover:bg-[#f0f3f9]"
+								className="m-0 flex flex-initial flex-row items-center overflow-hidden text-ellipsis whitespace-nowrap rounded border-0 py-[6px] px-[9px] text-[#3c4149] hover:bg-[#f0f3f9]"
 								style={{ WebkitBoxAlign: "center" }}
 							>
 								<span
 									className="relative inline-block h-[18px] w-[18px] flex-shrink-0
-								 rounded-[4px] object-cover text-[11px] leading-[0]"
+								 rounded object-cover text-[11px] leading-[0]"
 								>
 									<div
 										className="flex h-full w-full flex-shrink-0 items-center justify-center rounded-[50%] bg-black text-white [text-shadow:rgb(0_0_0_/_40%)_0px_1px_2px]"
@@ -54,7 +54,7 @@ const SideBar = () => {
 							/>
 						</div>
 						<div>
-							<button className="duration-0 group flex items-center rounded-[4px] border-none p-[7px] shadow-none transition-[background] hover:bg-[#f0f3f9]">
+							<button className="duration-0 group flex items-center rounded border-none p-[7px] shadow-none transition-[background] hover:bg-[#f0f3f9]">
 								{/* eslint-disable-next-line @next/next/no-img-element */}
 								<span className="relative h-[18px] w-[18px] flex-shrink-0 text-[9px] leading-[0]">
 									{/* eslint-disable-next-line @next/next/no-img-element */}
@@ -74,7 +74,7 @@ const SideBar = () => {
 							style={{ WebkitBoxFlex: 1 }}
 						>
 							<button
-								className="m-0 inline-flex h-9 min-w-[36px] flex-shrink-0 flex-grow select-none items-center justify-between whitespace-nowrap rounded-[4px] border border-[#dfe1e4] px-[9px] py-0 text-xs text-[#3c4149] shadow-[rgb(0_0_0_/_7%)_0px_1px_1px] [transition-property:border,_background-color,_color,_box-shadow,_opacity]"
+								className="m-0 inline-flex h-9 min-w-[36px] flex-shrink-0 flex-grow select-none items-center justify-between whitespace-nowrap rounded border border-[#dfe1e4] px-[9px] py-0 text-xs text-[#3c4149] shadow-[rgb(0_0_0_/_7%)_0px_1px_1px] [transition-property:border,_background-color,_color,_box-shadow,_opacity]"
 								draggable="false"
 								style={{ WebkitBoxFlex: 1 }}
 							>
@@ -111,11 +111,11 @@ const SideBar = () => {
 					style={{ WebkitBoxFlex: 1 }}
 				>
 					{/* inbox */}
-					<div className="m-[1px] rounded-[4px]">
+					<div className="m-[1px] rounded">
 						<div className="block flex-initial flex-row">
-							<Link href={"/"} className="block rounded-[4px] text-[#282a30]">
+							<Link href={"/"} className="block rounded text-[#282a30]">
 								<span
-									className="flex h-[27px] flex-grow items-center overflow-hidden text-ellipsis whitespace-nowrap rounded-[4px] fill-[#6b6f76] py-0 pr-[2px] pl-[6px] text-[13px] font-medium leading-normal text-[#3c4149]"
+									className="flex h-[27px] flex-grow items-center overflow-hidden text-ellipsis whitespace-nowrap rounded fill-[#6b6f76] py-0 pr-[2px] pl-[6px] text-[13px] font-medium leading-normal text-[#3c4149]"
 									style={{ WebkitBoxAlign: "center", WebkitBoxFlex: 1 }}
 								>
 									<svg
@@ -144,7 +144,7 @@ const SideBar = () => {
 				{/* Icon to control nav in mobile view */}
 				<button
 					style={{ WebkitBoxAlign: "center", WebkitBoxPack: "center" }}
-					className="fixed left-[env(safe-area-inset-left,0px)] top-0 m-0 inline-flex h-14 w-[52px] flex-shrink-0 items-center justify-center whitespace-nowrap rounded-[4px] pl-2 font-medium leading-normal lg:hidden"
+					className="fixed left-[env(safe-area-inset-left,0px)] top-0 m-0 inline-flex h-14 w-[52px] flex-shrink-0 items-center justify-center whitespace-nowrap rounded pl-2 font-medium leading-normal lg:hidden"
 					onClick={() => setSideBarOpen(!sideBarOpen)}
 				>
 					<svg width="14" height="10" viewBox="0 0 14 10" fill="#6B6F76">

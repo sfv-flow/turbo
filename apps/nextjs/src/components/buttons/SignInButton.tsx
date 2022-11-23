@@ -9,7 +9,7 @@ const SignInButton = ({ provider }: { provider: BuiltInProviderType }) => {
 	return (
 		<button
 			onClick={() => SignInHandler(provider)}
-			className=" m-0 inline-flex h-12 w-[336px] min-w-[32px] flex-shrink-0 select-none items-center justify-center whitespace-nowrap rounded-[4px] border border-[#6e79d6] bg-[#575bc7] py-0 px-[14px] font-medium text-white shadow-[rgb(0_0_0_/_7%)_0px_1px_2px] [transition-property:border,background-color,color,box-shadow,opacity]"
+			className=" m-0 inline-flex h-12 w-[336px] min-w-[32px] flex-shrink-0 select-none items-center justify-center whitespace-nowrap rounded border border-[#6e79d6] bg-[#575bc7] py-0 px-[14px] font-medium text-white shadow-[rgb(0_0_0_/_7%)_0px_1px_2px] [transition-property:border,background-color,color,box-shadow,opacity]"
 			draggable="false"
 			style={{
 				WebkitBoxAlign: "center",
