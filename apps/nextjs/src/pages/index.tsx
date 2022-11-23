@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { trpc } from "../utils/trpc";
 import { useForm } from "react-hook-form";
@@ -99,6 +99,22 @@ export const CreateWorkSpaceComponent = () => {
 						</form>
 					</div>
 				</div>
+			</div>
+			{/* logout button */}
+			<div
+				className="fixed top-6 right-6 inline-flex flex-initial flex-row items-center justify-center"
+				style={{ WebkitBoxAlign: "center", WebkitBoxPack: "center" }}
+			>
+				<button
+					onClick={() => {
+						signOut();
+					}}
+					className="m-0 inline-flex h-8 min-w-[32px] flex-shrink-0 select-none items-center justify-center whitespace-nowrap rounded-[4px] border border-transparent py-0 px-3 text-xs font-medium text-[#d2d3e0] shadow-none outline-none duration-150 [transition-property:border,background-color,color,box-shadow,opacity] hover:bg-[#272832] hover:text-[#EEEFFC] hover:duration-[0]"
+					draggable="false"
+					style={{ WebkitBoxAlign: "center", WebkitBoxPack: "center" }}
+				>
+					log out
+				</button>
 			</div>
 		</div>
 	);
