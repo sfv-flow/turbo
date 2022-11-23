@@ -2,7 +2,6 @@ import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { trpc } from "../utils/trpc";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
 
 const Home = () => {
 	const router = useRouter();
@@ -14,7 +13,7 @@ const Home = () => {
 		{} as unknown as void,
 		{ refetchOnWindowFocus: false },
 	);
-	const { mutate } = trpc.workspace.createWorkspace.useMutation();
+	// const { mutate } = trpc.workspace.createWorkspace.useMutation();
 
 	if (status === "loading") return null;
 
@@ -30,13 +29,7 @@ const Home = () => {
 };
 
 export const CreateWorkSpaceComponent = () => {
-	const {
-		register,
-		handleSubmit,
-		watch,
-		setValue,
-		formState: { errors },
-	} = useForm();
+	const { register } = useForm();
 	const { data: session } = useSession();
 
 	return (
