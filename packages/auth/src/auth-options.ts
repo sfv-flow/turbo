@@ -6,6 +6,9 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 export const authOptions: NextAuthOptions = {
 	// Configure one or more authentication providers
+	pages: {
+		signIn: "/login",
+	},
 	adapter: PrismaAdapter(prisma),
 	callbacks: {
 		session({ session, user }) {
