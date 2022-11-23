@@ -37,6 +37,7 @@ export const CreateWorkSpaceComponent = () => {
 		setValue,
 		formState: { errors },
 	} = useForm();
+	const { data: session } = useSession();
 
 	return (
 		<div className="relative flex h-full flex-initial flex-col overflow-auto bg-[#191a23]">
@@ -100,6 +101,25 @@ export const CreateWorkSpaceComponent = () => {
 					</div>
 				</div>
 			</div>
+			{/* User Info */}
+			<div
+				className="fixed top-6 left-6 inline-flex flex-initial flex-row items-center justify-center"
+				style={{ WebkitBoxAlign: "center", WebkitBoxPack: "center" }}
+			>
+				<button
+					draggable="false"
+					className="over:bg-[#272832] m-0 inline select-none overflow-hidden whitespace-nowrap rounded-[4px] border-0 bg-transparent p-2 text-left text-[#eeeffc] transition-colors duration-150 hover:bg-[#272832] hover:text-[#EEEFFC] hover:duration-[0]"
+				>
+					<div className="flex flex-initial flex-col">
+						<span className="whitespace-nowrap text-left text-xs text-[#858699] duration-150 [transition-property:color,fill]">
+							Logged in as:
+						</span>
+						<span className="mt-[5px] text-ellipsis text-left text-[0.8175rem] font-medium text-[#d2d3e0] duration-150 [transition-property:color,fill] hover:text-[#eeeffc]">
+							{session?.user.email}
+						</span>
+					</div>
+				</button>
+			</div>
 			{/* logout button */}
 			<div
 				className="fixed top-6 right-6 inline-flex flex-initial flex-row items-center justify-center"
@@ -109,7 +129,7 @@ export const CreateWorkSpaceComponent = () => {
 					onClick={() => {
 						signOut();
 					}}
-					className="m-0 inline-flex h-8 min-w-[32px] flex-shrink-0 select-none items-center justify-center whitespace-nowrap rounded-[4px] border border-transparent py-0 px-3 text-xs font-medium text-[#d2d3e0] shadow-none outline-none duration-150 [transition-property:border,background-color,color,box-shadow,opacity] hover:bg-[#272832] hover:text-[#EEEFFC] hover:duration-[0]"
+					className="m-0 inline-flex h-8 min-w-[32px] flex-shrink-0 select-none items-center justify-center whitespace-nowrap rounded-[4px] border border-transparent bg-transparent py-0 px-3 text-xs font-medium text-[#d2d3e0] shadow-none outline-none duration-150 [transition-property:border,background-color,color,box-shadow,opacity] hover:bg-[#272832] hover:text-[#EEEFFC] hover:duration-[0]"
 					draggable="false"
 					style={{ WebkitBoxAlign: "center", WebkitBoxPack: "center" }}
 				>
