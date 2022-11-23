@@ -59,17 +59,24 @@ model Category {
 }
 
 model User {
-    id               String     @id @default(cuid())
+    id               String      @id @default(cuid())
     name             String?
-    email            String?    @unique
+    email            String?     @unique
     emailVerified    DateTime?
     image            String?
     accounts         Account[]
     sessions         Session[]
     Category         Category[]
-    inWaitList       Boolean    @default(true)
-    waitlistPosition Int?       @default(0)
-    giftSlug         String?
+    inWaitList       Boolean     @default(true)
+    waitlistPosition Int?        @default(0)
+    workspaces       Workspace[]
+}
+
+model Workspace {
+    id    String @id @default(cuid())
+    name  String
+    slug  String @unique
+    users User[]
 }
 
 model VerificationToken {
