@@ -52,8 +52,8 @@ export const CreateWorkSpaceComponent = () => {
 					Create a workspace
 				</span>
 				<span className="mb-8 w-[620px] max-w-[440px] text-center leading-[1.4375rem] text-[#858699]">
-					Workspaces are shared environments where teams can work on projects,
-					cycles and tasks.
+					Workspaces are your own personal space, designed just for you to
+					organize and manage your notes, homework efficiently.
 				</span>
 				<div className="w-[460px] max-w-[90vw] overflow-hidden bg-[#1d1e2b] p-6 [box-shadow:rgb(0_0_0_/_15%)_0px_5px_20px]">
 					<div className="flex flex-initial flex-col">
