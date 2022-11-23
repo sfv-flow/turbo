@@ -2,6 +2,7 @@ import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { trpc } from "../utils/trpc";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 const Home = () => {
 	const router = useRouter();
@@ -9,7 +10,7 @@ const Home = () => {
 	//  if there is only session and no slug, redirect to create workspace
 	//  if there is no session, show home page
 	const { data: session, status } = useSession();
-	const { data: workspaces } = trpc.workspace.fetchUserWorkspaces.useQuery(
+	const { data: workspace } = trpc.workspace.fetchUserWorkspace.useQuery(
 		{} as unknown as void,
 		{ refetchOnWindowFocus: false },
 	);
@@ -17,20 +18,42 @@ const Home = () => {
 
 	if (status === "loading") return null;
 
-	if (session && workspaces?.length) {
-		return router.push(`/${workspaces[0]?.slug}`);
+	if (session && workspace) {
+		router.push(`/${workspace.slug}`);
 	}
 
-	if (session && !workspaces?.length) {
+	if (session && !workspace) {
 		return <CreateWorkSpaceComponent />;
 	}
 
 	return <div>home page</div>;
 };
 
+type CreateWorkspaceForm = {
+	workspaceName: string;
+	workspaceSlug: string;
+};
+
 export const CreateWorkSpaceComponent = () => {
-	const { register } = useForm();
+	const { register, getValues } = useForm<CreateWorkspaceForm>();
 	const { data: session } = useSession();
+	const {
+		mutateAsync: createWorkspace,
+		isError,
+		error,
+		isSuccess: createWorkspaceSuccess,
+	} = trpc.workspace.createWorkspace.useMutation();
+
+	const createWorkspaceHandler = async () => {
+		const { workspaceName, workspaceSlug } = getValues();
+		await createWorkspace({
+			workspaceName,
+			workspaceSlug,
+		});
+		if (createWorkspaceSuccess) {
+			window.location.reload();
+		}
+	};
 
 	return (
 		<div className="relative flex h-full flex-initial flex-col overflow-auto bg-[#191a23]">
@@ -88,6 +111,16 @@ export const CreateWorkSpaceComponent = () => {
 											{...register("workspaceSlug", { required: true })}
 										/>
 									</div>
+									{isError && error.data?.code === "CONFLICT" && (
+										<div
+											className="mt-2 flex-initial flex-row items-center pl-[2px]"
+											style={{ WebkitBoxAlign: "center" }}
+										>
+											<span className="font- text-left text-[11px] text-[#eb5757]">
+												{error.message}
+											</span>
+										</div>
+									)}
 								</div>
 							</div>
 						</form>
@@ -96,6 +129,7 @@ export const CreateWorkSpaceComponent = () => {
 				{/* submit button */}
 				<div>
 					<button
+						onClick={() => createWorkspaceHandler()}
 						className="relative mt-6 inline-flex h-12 w-[340px] min-w-[32px] max-w-[90vw] flex-shrink-0 select-none items-center justify-center whitespace-nowrap rounded border border-[#575ac7] bg-[#575bc7] py-0 px-6 text-[13px] text-white [shadow:rgb(0_0_0/15%)_0px_1px_2px]"
 						draggable="false"
 						style={{
