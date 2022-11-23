@@ -1,14 +1,14 @@
 import SignInButton from "../components/buttons/SignInButton";
 
-const SignUp = () => {
+const Login = () => {
 	return (
 		<div className="flex h-full flex-auto flex-shrink-0 flex-col bg-gradient-to-b from-[#EFF1F4] to-white/50">
-			<SignUpCard />
+			<LoginCard />
 		</div>
 	);
 };
 
-const SignUpCard = () => {
+const LoginCard = () => {
 	return (
 		<div
 			className="mx-auto mt-[71.5px] mb-auto flex flex-initial flex-col items-center"
@@ -26,7 +26,7 @@ const SignUpCard = () => {
 					}}
 				>
 					<span className="mb-8 text-left text-xl font-medium tracking-[-0.01rem] text-[#3c4149]">
-						Sign up for Flow
+						Log in for Flow
 					</span>
 					<SignInButton provider={"google"} />
 				</div>
@@ -35,4 +35,4 @@ const SignUpCard = () => {
 	);
 };
 
-export default SignUp;
+export default Login;
