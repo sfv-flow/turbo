@@ -31,22 +31,20 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 		return <span>404</span>;
 	}
 
-	if (session && workspaceData) {
-		return (
-			<div
-				className="fixed flex h-full min-h-full w-full flex-row overflow-hidden pr-[env(safe-area-inset-right,0px)] pl-[env(safe-area-inset-left,0px)] text-[#eeeffc] [border-top:none] lg:static lg:z-auto"
-				style={{ WebkitBoxAlign: "stretch" }}
+	return (
+		<div
+			className="fixed flex h-full min-h-full w-full flex-row overflow-hidden pr-[env(safe-area-inset-right,0px)] pl-[env(safe-area-inset-left,0px)] text-[#eeeffc] [border-top:none] lg:static lg:z-auto"
+			style={{ WebkitBoxAlign: "stretch" }}
+		>
+			{session && workspaceData && <SideBar workspace={workspaceData} />}
+			<main
+				className="relative flex flex-initial flex-grow flex-col place-items-stretch overflow-auto text-black [scrollbar-gutter:auto]"
+				style={{ WebkitBoxAlign: "stretch", WebkitBoxFlex: 1 }}
 			>
-				<SideBar workspace={workspaceData} />
-				<main
-					className="relative flex flex-initial flex-grow flex-col place-items-stretch overflow-auto text-black [scrollbar-gutter:auto]"
-					style={{ WebkitBoxAlign: "stretch", WebkitBoxFlex: 1 }}
-				>
-					{children}
-				</main>
-			</div>
-		);
-	}
+				{children}
+			</main>
+		</div>
+	);
 };
 
 export default Container;
