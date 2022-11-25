@@ -1,8 +1,13 @@
+import { Workspace } from "@flow/db";
 import clsx from "clsx";
 import Link from "next/link";
 import { useState } from "react";
 
-const SideBar = ({ workspaceName }: { workspaceName: string }) => {
+const SideBar = ({
+	workspace,
+}: {
+	workspace: Workspace | null | undefined;
+}) => {
 	const [sideBarOpen, setSideBarOpen] = useState(true);
 	return (
 		<>
@@ -45,7 +50,7 @@ const SideBar = ({ workspaceName }: { workspaceName: string }) => {
 									</div>
 								</span>
 								<span className="ml-3 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-medium not-italic leading-normal text-[#3c4149]">
-									{workspaceName}
+									{workspace?.name}
 								</span>
 							</button>
 							<div
@@ -113,7 +118,10 @@ const SideBar = ({ workspaceName }: { workspaceName: string }) => {
 					{/* inbox */}
 					<div className="m-[1px] rounded">
 						<div className="block flex-initial flex-row">
-							<Link href={"/"} className="block rounded text-[#282a30]">
+							<Link
+								href={`${workspace?.slug}/inbox`}
+								className="block rounded text-[#282a30]"
+							>
 								<span
 									className="flex h-[27px] flex-grow items-center overflow-hidden text-ellipsis whitespace-nowrap rounded fill-[#6b6f76] py-0 pr-[2px] pl-[6px] text-[13px] font-medium leading-normal text-[#3c4149]"
 									style={{ WebkitBoxAlign: "center", WebkitBoxFlex: 1 }}
