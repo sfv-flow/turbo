@@ -41,7 +41,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 				className="relative flex flex-initial flex-grow flex-col place-items-stretch overflow-auto text-black [scrollbar-gutter:auto]"
 				style={{ WebkitBoxAlign: "stretch", WebkitBoxFlex: 1 }}
 			>
-				{children}
+				{session && workspaceData && children}
 			</main>
 		</div>
 	);
