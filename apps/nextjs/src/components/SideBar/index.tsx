@@ -1,6 +1,7 @@
 import { Workspace } from "@flow/db";
 import clsx from "clsx";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const SideBar = ({
@@ -8,6 +9,7 @@ const SideBar = ({
 }: {
 	workspace: Workspace | null | undefined;
 }) => {
+	const router = useRouter();
 	const [sideBarOpen, setSideBarOpen] = useState(true);
 	return (
 		<>
@@ -119,7 +121,12 @@ const SideBar = ({
 					<div className="m-[1px] rounded">
 						<div className="block flex-initial flex-row">
 							<Link
-								href={`${workspace?.slug}/inbox`}
+								//  if we are on the inbox page, then we don't want to link to the inbox page
+								href={{
+									pathname:
+										router.pathname === "/[slug]/inbox" ? "" : "/[slug]/inbox",
+									query: { slug: router.query.slug },
+								}}
 								className="block rounded text-[#282a30]"
 							>
 								<span

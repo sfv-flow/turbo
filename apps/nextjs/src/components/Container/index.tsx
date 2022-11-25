@@ -1,4 +1,3 @@
-import { Workspace } from "@flow/db";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React from "react";
@@ -17,7 +16,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			{
 				// TODO: better logic
-				workspaceSlug: router.query.slug as string,
+				workspaceSlug: router.isReady ? (router.query.slug as string) : "",
 			},
 			{
 				refetchOnWindowFocus: false,
