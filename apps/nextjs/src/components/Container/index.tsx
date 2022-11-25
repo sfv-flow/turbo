@@ -1,6 +1,5 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { use, useEffect } from "react";
 import { trpc } from "../../utils/trpc";
 import SideBar from "../SideBar";
 
@@ -28,7 +27,8 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 	}
 
 	if (!workspaceData && session) {
-		return 404;
+		// TEMP
+		return <span>404</span>;
 	}
 
 	return (
