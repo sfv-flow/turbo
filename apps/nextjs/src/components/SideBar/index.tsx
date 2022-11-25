@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useState } from "react";
 
-const SideBar = () => {
+const SideBar = ({ workspaceName }: { workspaceName: string }) => {
 	const [sideBarOpen, setSideBarOpen] = useState(true);
 	return (
 		<>
@@ -45,7 +45,7 @@ const SideBar = () => {
 									</div>
 								</span>
 								<span className="ml-3 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-medium not-italic leading-normal text-[#3c4149]">
-									{`Daniel's workspace`}
+									{workspaceName}
 								</span>
 							</button>
 							<div

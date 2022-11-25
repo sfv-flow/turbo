@@ -67,4 +67,19 @@ export const workspaceRouter = router({
 		});
 		return userWorkspace;
 	}),
+	fetchWorkspaceDetails: protectedProcedure
+		.input(
+			z.object({
+				workspaceSlug: z.string(),
+			}),
+		)
+		.query(async ({ ctx, input }) => {
+			const { workspaceSlug } = input;
+			const workspaceDetails = await ctx.prisma.workspace.findUnique({
+				where: {
+					slug: workspaceSlug,
+				},
+			});
+			return workspaceDetails;
+		}),
 });
