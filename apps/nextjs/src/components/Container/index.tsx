@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { use, useEffect } from "react";
 import { trpc } from "../../utils/trpc";
 import SideBar from "../SideBar";
 
@@ -22,9 +22,12 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 				refetchOnWindowFocus: false,
 			},
 		);
+
+	useEffect(() => {
+		if (session && !workspaceData) router.push("/");
+	}, [session, workspaceData, router]);
+
 	if (isFetchingWorkspace) return <div>Loading...</div>;
-	if (session && !workspaceData)
-		return <div>Workspace not found {workspaceData}</div>;
 
 	return (
 		<div

@@ -75,11 +75,18 @@ export const workspaceRouter = router({
 		)
 		.query(async ({ ctx, input }) => {
 			const { workspaceSlug } = input;
-			const workspaceDetails = await ctx.prisma.workspace.findUnique({
+			// we need to also check if user is within the workspace
+			const workspaceDetails = await ctx.prisma.workspace.findFirst({
 				where: {
 					slug: workspaceSlug,
+					users: {
+						some: {
+							id: ctx.session?.user.id,
+						},
+					},
 				},
 			});
+
 			return workspaceDetails;
 		}),
 });
