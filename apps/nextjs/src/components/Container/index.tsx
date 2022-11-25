@@ -11,7 +11,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 		required: true,
 	});
 
-	const { data: workspaceData, isFetching: isFetchingWorkspace } =
+	const { data: workspaceData, isFetched: workspaceIsFetched } =
 		trpc.workspace.fetchWorkspaceDetails.useQuery(
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			{
@@ -23,11 +23,13 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 			},
 		);
 
-	useEffect(() => {
-		if (session && !workspaceData) router.push("/");
-	}, [session, workspaceData, router]);
+	if (!workspaceIsFetched) {
+		return <div>Loading...</div>;
+	}
 
-	if (isFetchingWorkspace) return <div>Loading...</div>;
+	if (!workspaceData && session) {
+		return 404;
+	}
 
 	return (
 		<div
