@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { ReactElement } from "react";
-import Container from "../../components/container";
+import Container from "../../../components/container";
 
-const Settings = () => {
+const WorkspaceSettings = () => {
 	const router = useRouter();
 
 	// with require being true the user will be directly pushed to the login page if they are not logged in
@@ -17,8 +17,8 @@ const Settings = () => {
 	);
 };
 
-export default Settings;
+export default WorkspaceSettings;
 
-Settings.getLayout = function getLayout(page: ReactElement) {
+WorkspaceSettings.getLayout = function getLayout(page: ReactElement) {
 	return <Container>{page}</Container>;
 };
