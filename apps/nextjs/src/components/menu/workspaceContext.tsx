@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { trpc } from "../../utils/trpc";
@@ -11,9 +12,10 @@ const WorkspaceContextMenu = () => {
 	);
 
 	return (
-		<div className="fixed z-[600] m-0 [inset:0px_auto_auto_0px] [transform:translate3d(14px,50px,0px)]">
-			<div className="pointer-events-auto rounded-lg bg-[#F3F3F3] opacity-[2] shadow-[rgb(0_0_0/9%)_0px_3px_12px] [transform:scale(1)] [transform-origin:0px_0px] [backdrop-filter:blur(12px)_saturate(190%)_contrast(50%)_brightness(130%)]">
+		<div className="fixed z-[600] m-0 [inset:0px_auto_auto_0px] [transform:translate3d(14px,90px,0px)] lg:[transform:translate3d(14px,50px,0px)]">
+			<div className="pointer-events-auto rounded-lg bg-[#F3F3F3] opacity-[2] shadow-[rgb(0_0_0/9%)_0px_3px_12px] transition-colors [transform:scale(1)] [transform-origin:0px_0px] [backdrop-filter:blur(12px)_saturate(190%)_contrast(50%)_brightness(130%)]">
 				<div className="flex max-h-[calc(100vh-130px)] w-[250px] max-w-[100vw] flex-initial flex-col overflow-hidden rounded bg-white/[0.03] shadow-[rgb(0_0_0/6%)_0px_7px_24px]">
+					{/* User Workspaces */}
 					<div
 						className="flex  flex-grow-0 flex-col pt-3 pr-3 pl-[14px] pb-3"
 						style={{ WebkitBoxFlex: 0 }}
@@ -26,9 +28,8 @@ const WorkspaceContextMenu = () => {
 						{workspaces?.map((workspace) => (
 							<Link
 								key={workspace.id}
-								//  if they are on pages that has a pathname, add the query to the href
 								href={`/${workspace?.slug}`}
-								className="rounded py-[6px] px-3 text-[#282a30] hover:bg-[#00000010]"
+								className="rounded py-[6px] px-3 text-[#282a30] transition-colors hover:bg-[#00000010]"
 							>
 								<div
 									className="flex flex-row items-center "
@@ -62,6 +63,39 @@ const WorkspaceContextMenu = () => {
 								</div>
 							</Link>
 						))}
+					</div>
+					{/* Workspace options */}
+					<div className="flex flex-initial flex-col p-[6px] [border-top:1px_solid_rgba(0,0,0,0.063)]">
+						<Link
+							href={"/settings/workspaces"}
+							className="rounded py-[6px] px-3 text-[#282a30] transition-colors hover:bg-[#00000010]"
+						>
+							<span className="text-xs leading-normal text-black/[0.816]">
+								Workspace settings
+							</span>
+						</Link>
+						<Link
+							href={"/join"}
+							className="rounded py-[6px] px-3 text-[#282a30] hover:bg-[#00000010]"
+						>
+							<span className="text-xs leading-normal text-black/[0.816]">
+								Create a new workspace
+							</span>
+						</Link>
+					</div>
+					{/* Logout */}
+					<div className="flex flex-initial flex-col p-[6px] [border-top:1px_solid_rgba(0,0,0,0.063)]">
+						<button className="m-0 inline rounded bg-transparent py-2 text-left leading-none text-[#282a30] transition-colors hover:bg-[#00000010]">
+							<div
+								onClick={() => signOut()}
+								draggable={false}
+								className="rounded px-3 text-[#282a30] "
+							>
+								<span className="text-xs leading-normal text-black/[0.816]">
+									Log out
+								</span>
+							</div>
+						</button>
 					</div>
 				</div>
 			</div>
