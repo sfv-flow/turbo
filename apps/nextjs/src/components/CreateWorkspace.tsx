@@ -1,4 +1,5 @@
 import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { trpc } from "../utils/trpc";
 
@@ -8,6 +9,7 @@ type CreateWorkspaceForm = {
 };
 
 const CreateWorkSpaceComponent = () => {
+	const router = useRouter();
 	const { register, getValues } = useForm<CreateWorkspaceForm>();
 	const { data: session } = useSession();
 	const {
@@ -24,7 +26,8 @@ const CreateWorkSpaceComponent = () => {
 			workspaceSlug,
 		});
 		if (createWorkspaceSuccess) {
-			window.location.reload();
+			// push to workspace
+			router.push(`/${workspaceSlug}`);
 		}
 	};
 
