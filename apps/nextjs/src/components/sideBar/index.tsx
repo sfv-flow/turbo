@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import UserContextMenu from "../menu/userContext";
+import WorkspaceContextMenu from "../menu/workspaceContext";
 
 const SideBar = ({
 	workspace,
@@ -35,28 +36,36 @@ const SideBar = ({
 							className="flex min-w-0 max-w-full flex-auto flex-row items-center"
 							style={{ WebkitBoxAlign: "center" }}
 						>
-							<button
-								className="m-0 flex flex-initial flex-row items-center overflow-hidden text-ellipsis whitespace-nowrap rounded border-0 py-[6px] px-[9px] text-[#3c4149] hover:bg-[#f0f3f9]"
-								style={{ WebkitBoxAlign: "center" }}
-							>
-								<span
-									className="relative inline-block h-[18px] w-[18px] flex-shrink-0
-								 rounded object-cover text-[11px] leading-[0]"
-								>
+							<Popover.Root>
+								<Popover.Trigger>
 									<div
-										className="flex h-full w-full flex-shrink-0 items-center justify-center rounded-[50%] bg-black text-white [text-shadow:rgb(0_0_0_/_40%)_0px_1px_2px]"
-										style={{
-											WebkitBoxAlign: "center",
-											WebkitBoxPack: "center",
-										}}
+										className="m-0 flex w-full flex-initial flex-row items-center overflow-hidden text-ellipsis whitespace-nowrap rounded border-0 py-[6px] px-[9px] text-[#3c4149] hover:bg-[#f0f3f9]"
+										style={{ WebkitBoxAlign: "center" }}
 									>
-										FL
+										<span
+											className="relative inline-block h-[18px] w-[18px] flex-shrink-0
+								 rounded object-cover text-[11px] leading-[0]"
+										>
+											<div
+												className="flex h-full w-full flex-shrink-0 items-center justify-center rounded-[50%] bg-black text-white [text-shadow:rgb(0_0_0_/_40%)_0px_1px_2px]"
+												style={{
+													WebkitBoxAlign: "center",
+													WebkitBoxPack: "center",
+												}}
+											>
+												FL
+											</div>
+										</span>
+										<span className="ml-3 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-medium not-italic leading-normal text-[#3c4149]">
+											{workspace?.name}
+										</span>
 									</div>
-								</span>
-								<span className="ml-3 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-medium not-italic leading-normal text-[#3c4149]">
-									{workspace?.name}
-								</span>
-							</button>
+								</Popover.Trigger>
+
+								<Popover.Content>
+									<WorkspaceContextMenu />
+								</Popover.Content>
+							</Popover.Root>
 							<div
 								className="min-w-2 flex flex-grow flex-row [flex-shrink:initial] [flex-basis:initial]"
 								style={{ WebkitBoxFlex: 1 }}
@@ -66,7 +75,7 @@ const SideBar = ({
 						<div>
 							<Popover.Root>
 								<Popover.Trigger>
-									<button className="duration-0 group flex items-center rounded border-none p-[7px] shadow-none transition-[background] hover:bg-[#f0f3f9]">
+									<div className="duration-0 group flex items-center rounded border-none p-[7px] shadow-none transition-[background] hover:bg-[#f0f3f9]">
 										{/* eslint-disable-next-line @next/next/no-img-element */}
 										<span className="relative h-[18px] w-[18px] flex-shrink-0 text-[9px] leading-[0]">
 											{/* eslint-disable-next-line @next/next/no-img-element */}
@@ -76,7 +85,7 @@ const SideBar = ({
 												className="h-full w-full flex-shrink-0 rounded-[50%]"
 											/>
 										</span>
-									</button>
+									</div>
 								</Popover.Trigger>
 								<Popover.Content>
 									<UserContextMenu />
