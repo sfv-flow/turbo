@@ -18,7 +18,7 @@ const UserContextItem = ({
 			}}
 		>
 			<div
-				className="mx-1 flex h-full flex-initial flex-grow flex-row items-center overflow-hidden rounded-[6px] py-0 px-[10px] hover:bg-[#EBECEC]"
+				className="mx-1 flex h-full flex-initial flex-grow flex-row items-center overflow-hidden rounded-md py-0 px-[10px] hover:bg-[#EBECEC]"
 				style={{
 					WebkitBoxFlex: 1,
 					WebkitBoxAlign: "center",
