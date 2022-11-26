@@ -27,7 +27,7 @@ const WorkspaceContextMenu = () => {
 							<Link
 								key={workspace.id}
 								//  if they are on pages that has a pathname, add the query to the href
-								href={`/${workspace?.slug}/${router.asPath.split("/")[2]}`}
+								href={`/${workspace?.slug}`}
 								className="rounded py-[6px] px-3 text-[#282a30] hover:bg-[#00000010]"
 							>
 								<div
