@@ -1,8 +1,10 @@
 import { Workspace } from "@flow/db";
+import * as Popover from "@radix-ui/react-popover";
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import UserContextMenu from "../menu/user";
 
 const SideBar = ({
 	workspace,
@@ -16,7 +18,7 @@ const SideBar = ({
 			{sideBarOpen && <div className="fixed inset-0 z-[1] bg-transparent" />}
 			<nav
 				className={clsx(
-					"absolute top-0 bottom-0 z-[2] box-border flex h-full w-[220px] min-w-[250px] max-w-[362px] flex-shrink-0 select-none flex-col shadow-[rgba(0,_0,_0,_0.07)_0px_0px_16px] backdrop-filter-none [border-right:1px_solid_#EFF1F4] [transition:left_0.25s_ease-out_0s,box-shadow_0.15s_0s] lg:relative lg:min-w-[220px] lg:max-w-[330px] lg:shadow-none lg:[transition:opacity_0.05s_ease-in-out_0s]",
+					"absolute top-0 bottom-0 z-[2] box-border flex h-full w-[220px] min-w-[250px] max-w-[362px] flex-shrink-0 select-none flex-col bg-white shadow-[rgba(0,_0,_0,_0.07)_0px_0px_16px] backdrop-filter-none [border-right:1px_solid_#EFF1F4] [transition:left_0.25s_ease-out_0s,box-shadow_0.15s_0s] lg:relative lg:min-w-[220px] lg:max-w-[330px] lg:shadow-none lg:[transition:opacity_0.05s_ease-in-out_0s]",
 					!sideBarOpen ? "-left-[362px]" : "left-0",
 				)}
 			>
@@ -60,18 +62,28 @@ const SideBar = ({
 								style={{ WebkitBoxFlex: 1 }}
 							/>
 						</div>
+
 						<div>
-							<button className="duration-0 group flex items-center rounded border-none p-[7px] shadow-none transition-[background] hover:bg-[#f0f3f9]">
-								{/* eslint-disable-next-line @next/next/no-img-element */}
-								<span className="relative h-[18px] w-[18px] flex-shrink-0 text-[9px] leading-[0]">
-									{/* eslint-disable-next-line @next/next/no-img-element */}
-									<img
-										src="https://uploads.linear.app/e44c04ef-b970-4d4a-bbec-5fa92ef59fd4/e16385c3-c607-45a7-beaf-ea98896940c0"
-										alt="Avatar of aka howl"
-										className="h-full w-full flex-shrink-0 rounded-[50%]"
-									/>
-								</span>
-							</button>
+							<Popover.Root>
+								<Popover.Trigger>
+									<button className="duration-0 group flex items-center rounded border-none p-[7px] shadow-none transition-[background] hover:bg-[#f0f3f9]">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<span className="relative h-[18px] w-[18px] flex-shrink-0 text-[9px] leading-[0]">
+											{/* eslint-disable-next-line @next/next/no-img-element */}
+											<img
+												src="https://uploads.linear.app/e44c04ef-b970-4d4a-bbec-5fa92ef59fd4/e16385c3-c607-45a7-beaf-ea98896940c0"
+												alt="Avatar of aka howl"
+												className="h-full w-full flex-shrink-0 rounded-[50%]"
+											/>
+										</span>
+									</button>
+								</Popover.Trigger>
+								<Popover.Portal>
+									<Popover.Content>
+										<UserContextMenu />
+									</Popover.Content>
+								</Popover.Portal>
+							</Popover.Root>
 						</div>
 					</div>
 					{/* Search box */}

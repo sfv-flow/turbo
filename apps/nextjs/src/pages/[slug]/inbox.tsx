@@ -11,7 +11,9 @@ const Inbox = () => {
 	// });
 
 	return (
-		<p>This would be the Inbox content Current route: {router.pathname}</p>
+		<p className="">
+			This would be the Inbox content Current route: {router.pathname}
+		</p>
 	);
 };
 
