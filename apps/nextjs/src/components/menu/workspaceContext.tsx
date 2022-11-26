@@ -5,7 +5,10 @@ import { trpc } from "../../utils/trpc";
 const WorkspaceContextMenu = () => {
 	const router = useRouter();
 	const { data: user } = trpc.user.fetchUser.useQuery();
-	const { data: workspaces } = trpc.workspace.fetchUserWorkspaces.useQuery();
+	const { data: workspaces } = trpc.workspace.fetchUserWorkspaces.useQuery(
+		{} as unknown as void,
+		{ refetchOnWindowFocus: false },
+	);
 
 	return (
 		<div className="fixed z-[600] m-0 [inset:0px_auto_auto_0px] [transform:translate3d(14px,50px,0px)]">
@@ -32,7 +35,7 @@ const WorkspaceContextMenu = () => {
 								>
 									<span className="leading-0 relative mr-[10px] inline-block h-[18px] w-[18px] flex-shrink-0 rounded object-cover text-[9px]">
 										<div
-											className="flex h-full w-full flex-shrink-0 items-center justify-center bg-[#5581eb] text-white"
+											className="flex h-full w-full flex-shrink-0 items-center justify-center rounded bg-[#5581eb] text-white"
 											style={{
 												WebkitBoxFlex: 1,
 												WebkitBoxAlign: "center",

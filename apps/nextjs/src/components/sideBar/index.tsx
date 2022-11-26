@@ -47,7 +47,7 @@ const SideBar = ({
 								 rounded object-cover text-[11px] leading-[0]"
 										>
 											<div
-												className="flex h-full w-full flex-shrink-0 items-center justify-center rounded-[50%] bg-black text-white [text-shadow:rgb(0_0_0_/_40%)_0px_1px_2px]"
+												className="flex h-full w-full flex-shrink-0 items-center justify-center rounded bg-black text-white [text-shadow:rgb(0_0_0_/_40%)_0px_1px_2px]"
 												style={{
 													WebkitBoxAlign: "center",
 													WebkitBoxPack: "center",
