@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import UserContextMenu from "../menu/user";
+import UserContextMenu from "../menu/userContext";
 
 const SideBar = ({
 	workspace,
@@ -78,11 +78,9 @@ const SideBar = ({
 										</span>
 									</button>
 								</Popover.Trigger>
-								<Popover.Portal>
-									<Popover.Content>
-										<UserContextMenu />
-									</Popover.Content>
-								</Popover.Portal>
+								<Popover.Content>
+									<UserContextMenu />
+								</Popover.Content>
 							</Popover.Root>
 						</div>
 					</div>
