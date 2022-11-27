@@ -9,8 +9,6 @@ const SearchBar = () => {
 	const router = useRouter();
 	const { register, handleSubmit, formState } = useForm<Search>();
 	const searchHandler = (data: Search) => {
-		// check if it's a url or a search query
-		// if url, redirect to url
 		data.searchQuery = data.searchQuery.trim();
 		if (data.searchQuery.startsWith("http")) {
 			router.push(data.searchQuery);
