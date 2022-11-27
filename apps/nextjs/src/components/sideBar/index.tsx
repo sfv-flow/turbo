@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { trpc } from "../../utils/trpc";
 import UserContextMenu from "../menu/userContext";
 import WorkspaceContextMenu from "../menu/workspaceContext";
 
@@ -14,6 +15,13 @@ const SideBar = ({
 }) => {
 	const router = useRouter();
 	const [sideBarOpen, setSideBarOpen] = useState(true);
+	const { data: user } = trpc.user.fetchUser.useQuery();
+
+	const { data: workspaces } = trpc.workspace.fetchUserWorkspaces.useQuery(
+		{} as unknown as void,
+		{ refetchOnWindowFocus: false },
+	);
+
 	return (
 		<>
 			{sideBarOpen && <div className="fixed inset-0 z-[1] bg-transparent" />}
@@ -63,7 +71,7 @@ const SideBar = ({
 								</Popover.Trigger>
 
 								<Popover.Content>
-									<WorkspaceContextMenu />
+									<WorkspaceContextMenu workspaces={workspaces} user={user} />
 								</Popover.Content>
 							</Popover.Root>
 							<div

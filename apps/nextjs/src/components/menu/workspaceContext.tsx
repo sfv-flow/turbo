@@ -1,15 +1,16 @@
+import { User, Workspace } from "@flow/db";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { trpc } from "../../utils/trpc";
 
-const WorkspaceContextMenu = () => {
+const WorkspaceContextMenu = ({
+	workspaces,
+	user,
+}: {
+	workspaces: Workspace[] | undefined;
+	user: User | null | undefined;
+}) => {
 	const router = useRouter();
-	const { data: user } = trpc.user.fetchUser.useQuery();
-	const { data: workspaces } = trpc.workspace.fetchUserWorkspaces.useQuery(
-		{} as unknown as void,
-		{ refetchOnWindowFocus: false },
-	);
 
 	return (
 		<div className="fixed z-[600] m-0 [inset:0px_auto_auto_0px] [transform:translate3d(14px,90px,0px)] lg:[transform:translate3d(14px,50px,0px)]">
