@@ -1,16 +1,23 @@
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
 type Search = {
-	searchInput: string;
+	searchQuery: string;
 };
 
 const SearchBar = () => {
+	const router = useRouter();
 	const { register, handleSubmit, formState } = useForm<Search>();
-
 	const searchHandler = (data: Search) => {
-		// encode the data to URI
-		const encodedData = encodeURIComponent(data.searchInput);
-		window.location.href = `https://www.google.com/search?q=${encodedData}`;
+		// check if it's a url or a search query
+		// if url, redirect to url
+		data.searchQuery = data.searchQuery.trim();
+		if (data.searchQuery.startsWith("http")) {
+			router.push(data.searchQuery);
+		} else {
+			const encodedData = encodeURIComponent(data.searchQuery);
+			router.push(`https://www.google.com/search?q=${encodedData}`);
+		}
 	};
 
 	return (
@@ -48,7 +55,7 @@ const SearchBar = () => {
 							WebkitFlex: 1,
 						}}
 						placeholder="Search or Enter URL..."
-						{...register("searchInput")}
+						{...register("searchQuery")}
 					/>
 				</div>
 			</div>
