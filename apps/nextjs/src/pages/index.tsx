@@ -11,7 +11,7 @@ const Home = () => {
 	//  if there is only session and no slug, redirect to create workspace
 	//  if there is no session, show home page
 	const { data: session, status } = useSession();
-	const { data: workspace, isFetching: isFetchingWorkspace } =
+	const { data: workspace, isFetched: workspaceIsFetched } =
 		trpc.workspace.fetchUserWorkspace.useQuery({} as unknown as void, {
 			refetchOnWindowFocus: false,
 		});
@@ -23,7 +23,7 @@ const Home = () => {
 		}
 	}, [router, session, status, workspace]);
 
-	if (status === "loading" || isFetchingWorkspace) return <Loading />;
+	if (status === "loading" || !workspaceIsFetched) return <Loading />;
 
 	if (session && !workspace) {
 		const CreateWorkSpaceComponent = dynamic(
@@ -31,8 +31,13 @@ const Home = () => {
 			{ ssr: true },
 		);
 		return <CreateWorkSpaceComponent />;
-	} else {
-		return <div>home page</div>;
+	}
+	if (!session && !workspace) {
+		// const HomeComponent = dynamic(() => import("../components/Home"), {
+		// 	ssr: true,
+		// });
+		// return <HomeComponent />;
+		return <div>Home</div>;
 	}
 };
 
