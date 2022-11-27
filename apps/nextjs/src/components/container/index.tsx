@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { trpc } from "../../utils/trpc";
 import Loading from "../Loading";
 import SideBar from "../sideBar";
+import WorkspaceNotFound from "../WorkspaceNotFound";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
 	const router = useRouter();
@@ -29,7 +30,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 
 	if (!workspaceData && session) {
 		// TEMP
-		return <span>404</span>;
+		return <WorkspaceNotFound />;
 	}
 
 	return (
