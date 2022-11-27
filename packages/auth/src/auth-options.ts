@@ -9,6 +9,10 @@ export const authOptions: NextAuthOptions = {
 	pages: {
 		signIn: "/login",
 	},
+	session: {
+		maxAge: 24 * 60 * 60, // 24 hours
+		updateAge: 24 * 60 * 60, // 24 hours
+	},
 	adapter: PrismaAdapter(prisma),
 	callbacks: {
 		session({ session, user }) {
