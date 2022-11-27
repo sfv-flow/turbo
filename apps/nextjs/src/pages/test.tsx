@@ -1,10 +1,11 @@
 import { useSession } from "next-auth/react";
+import Loading from "../components/Loading";
 
 const NewPage = () => {
 	const { data: session } = useSession();
 	return (
 		<>
-			<div>{session?.user.id}</div>
+			<Loading />
 		</>
 	);
 };

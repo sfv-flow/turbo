@@ -2,6 +2,7 @@ import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Loading from "../components/Loading";
 import { trpc } from "../utils/trpc";
 
 const Home = () => {
@@ -22,7 +23,7 @@ const Home = () => {
 		}
 	}, [router, session, status, workspace]);
 
-	if (status === "loading" || isFetchingWorkspace) return null;
+	if (status === "loading" || isFetchingWorkspace) return <Loading />;
 
 	if (session && !workspace) {
 		const CreateWorkSpaceComponent = dynamic(

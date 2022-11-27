@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { trpc } from "../../utils/trpc";
+import Loading from "../Loading";
 import SideBar from "../sideBar";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
@@ -23,7 +24,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 		);
 
 	if (!workspaceIsFetched) {
-		return <div>Loading...</div>;
+		return <Loading />;
 	}
 
 	if (!workspaceData && session) {

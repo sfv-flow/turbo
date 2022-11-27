@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
+import Loading from "../components/Loading";
 import { trpc } from "../utils/trpc";
 
 const Join = () => {
@@ -14,7 +15,7 @@ const Join = () => {
 	// 		refetchOnWindowFocus: false,
 	// 	});
 
-	if (status === "loading") return null;
+	if (status === "loading") return <Loading />;
 
 	const CreateWorkSpaceComponent = dynamic(
 		() => import("../components/CreateWorkspace"),
