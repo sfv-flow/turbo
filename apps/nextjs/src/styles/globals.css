@@ -21,6 +21,9 @@ body {
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizelegibility;
 	text-size-adjust: 100%;
+	user-select: none;
+	cursor: default;
+	overflow: hidden;
 }
 #__next {
 	height: 100%;
