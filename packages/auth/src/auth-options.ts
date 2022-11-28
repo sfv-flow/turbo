@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
 					},
 					body: JSON.stringify({
 						// the username to be displayed
-						username: "Contact Form",
+						username: "Flow sign up",
 						// embeds to be sent
 						embeds: [
 							{
