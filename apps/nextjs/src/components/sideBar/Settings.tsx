@@ -26,7 +26,7 @@ const SettingSidebar = ({
 
 	return (
 		<>
-			{sideBarOpen && <div className="fixed inset-0 z-[1] bg-transparent" />}
+			{/* {sideBarOpen && <div className="fixed inset-0 z-[1] bg-transparent" />} */}
 			<nav
 				className={clsx(
 					"absolute top-0 bottom-0 z-[2] box-border flex h-full w-[220px] min-w-[250px] max-w-[362px] flex-shrink-0 select-none flex-col bg-white shadow-[rgba(0,_0,_0,_0.07)_0px_0px_16px] backdrop-filter-none [border-right:1px_solid_#EFF1F4] [transition:left_0.25s_ease-out_0s,box-shadow_0.15s_0s] lg:relative lg:min-w-[220px] lg:max-w-[330px] lg:shadow-none lg:[transition:opacity_0.05s_ease-in-out_0s]",

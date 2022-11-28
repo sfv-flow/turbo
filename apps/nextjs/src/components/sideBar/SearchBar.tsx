@@ -13,7 +13,9 @@ const SearchBar = () => {
 		if (data.searchQuery.startsWith("http")) {
 			router.push(data.searchQuery);
 		} else {
-			const encodedData = encodeURIComponent(data.searchQuery);
+			const encodedData = encodeURIComponent(
+				`"site:chegg.com" ${data.searchQuery}`,
+			);
 			router.push(`https://www.google.com/search?q=${encodedData}`);
 		}
 	};
