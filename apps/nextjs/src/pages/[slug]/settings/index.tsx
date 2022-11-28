@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { ReactElement } from "react";
-import Container from "../../../components/container";
+import SettingsContainer from "../../../components/container/Settings";
 
 const Settings = () => {
 	const router = useRouter();
@@ -20,5 +20,5 @@ const Settings = () => {
 export default Settings;
 
 Settings.getLayout = function getLayout(page: ReactElement) {
-	return <Container>{page}</Container>;
+	return <SettingsContainer>{page}</SettingsContainer>;
 };

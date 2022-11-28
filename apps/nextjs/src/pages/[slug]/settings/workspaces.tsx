@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { ReactElement } from "react";
 import Container from "../../../components/container";
+import SettingsContainer from "../../../components/container/Settings";
 
 const WorkspaceSettings = () => {
 	const router = useRouter();
@@ -20,5 +21,5 @@ const WorkspaceSettings = () => {
 export default WorkspaceSettings;
 
 WorkspaceSettings.getLayout = function getLayout(page: ReactElement) {
-	return <Container>{page}</Container>;
+	return <SettingsContainer>{page}</SettingsContainer>;
 };
