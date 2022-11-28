@@ -1,6 +1,7 @@
 import { Workspace } from "@flow/db";
 import * as Popover from "@radix-ui/react-popover";
 import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -62,7 +63,7 @@ const SideBar = ({
 													WebkitBoxPack: "center",
 												}}
 											>
-												FL
+												{workspace?.name.slice(0, 2).toUpperCase()}
 											</div>
 										</span>
 										<span className="ml-3 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-medium not-italic leading-normal text-[#3c4149]">
@@ -86,13 +87,27 @@ const SideBar = ({
 								<Popover.Trigger>
 									<div className="duration-0 group flex items-center rounded border-none p-[7px] shadow-none transition-[background] hover:bg-[#f0f3f9]">
 										{/* eslint-disable-next-line @next/next/no-img-element */}
-										<span className="relative h-[18px] w-[18px] flex-shrink-0 text-[9px] leading-[0]">
+										<span className="relative flex-shrink-0 text-[9px] leading-[0]">
 											{/* eslint-disable-next-line @next/next/no-img-element */}
-											<img
-												src="https://uploads.linear.app/e44c04ef-b970-4d4a-bbec-5fa92ef59fd4/e16385c3-c607-45a7-beaf-ea98896940c0"
-												alt="Avatar of aka howl"
-												className="h-full w-full flex-shrink-0 rounded-[50%]"
-											/>
+											{user?.image ? (
+												<Image
+													src={user.image ?? ""}
+													width={18}
+													height={18}
+													alt={`Avatar of ${user?.name}`}
+													className="h-full w-full flex-shrink-0 rounded-[50%]"
+												/>
+											) : (
+												<div
+													className="flex h-full w-full flex-shrink-0 items-center justify-center rounded-[50%] bg-emerald-500 text-white"
+													style={{
+														WebkitBoxAlign: "center",
+														WebkitBoxPack: "center",
+													}}
+												>
+													{user?.name?.slice(0, 2).toUpperCase()}
+												</div>
+											)}
 										</span>
 									</div>
 								</Popover.Trigger>
