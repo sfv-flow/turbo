@@ -88,7 +88,7 @@ const WorkspaceContextMenu = ({
 					<div className="flex flex-initial flex-col p-[6px] [border-top:1px_solid_rgba(0,0,0,0.063)]">
 						<button className="m-0 inline rounded bg-transparent py-2 text-left leading-none text-[#282a30] transition-colors hover:bg-[#00000010]">
 							<div
-								onClick={() => signOut()}
+								onClick={() => signOut({ callbackUrl: "/" })}
 								draggable={false}
 								className="rounded px-3 text-[#282a30] "
 							>
