@@ -1,15 +1,13 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider        = "prisma-client-js"
-    previewFeatures = ["referentialIntegrity"]
+    provider = "prisma-client-js"
 }
 
 datasource db {
-    provider             = "mysql"
-    url                  = env("DATABASE_URL")
-    referentialIntegrity = "prisma"
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
 }
 
 // NextAuth.js Models
@@ -32,6 +30,7 @@ model Account {
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@unique([provider, providerAccountId])
+    @@index([userId])
 }
 
 model Session {
@@ -40,6 +39,8 @@ model Session {
     userId       String
     expires      DateTime
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
 }
 
 model Site {
@@ -49,6 +50,8 @@ model Site {
     ogImage    String?
     Category   Category? @relation(fields: [categoryId], references: [id])
     categoryId String?
+
+    @@index([categoryId])
 }
 
 model Category {
@@ -56,6 +59,8 @@ model Category {
     type  String
     sites Site[]
     user  User   @relation(fields: [id], references: [id], onDelete: Cascade)
+
+    @@index([id])
 }
 
 model User {
