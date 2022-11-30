@@ -6,8 +6,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { trpc } from "../../utils/trpc";
-import UserContextMenu from "../menu/userContext";
-import WorkspaceContextMenu from "../menu/workspaceContext";
+import UserContextMenu from "../menu/UserContext";
+import WorkspaceContextMenu from "../menu/WorkspaceContext";
 import SearchBar from "./SearchBar";
 
 const SideBar = ({
