@@ -7,7 +7,7 @@ import { useState } from "react";
 import { trpc } from "../../utils/trpc";
 import UserContextMenu from "../menu/UserContext";
 import WorkspaceContextMenu from "../menu/WorkspaceContext";
-import SearchBar from "./SearchBar";
+import CommandBar from "../commandBar";
 import AccountSettingsItems from "./AccountSettingsItems";
 
 const SettingSidebar = ({
