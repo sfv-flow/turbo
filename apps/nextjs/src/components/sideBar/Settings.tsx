@@ -1,13 +1,9 @@
 import { Workspace } from "@flow/db";
-import * as Popover from "@radix-ui/react-popover";
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { trpc } from "../../utils/trpc";
-import UserContextMenu from "../popover/User";
-import WorkspaceContextMenu from "../popover/Workspace";
-import CommandBar from "../commandBar";
 import AccountSettingsItems from "./AccountSettingsItems";
 
 const SettingSidebar = ({

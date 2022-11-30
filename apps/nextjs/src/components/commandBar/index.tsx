@@ -1,65 +1,34 @@
-import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
-
-type Search = {
-	searchQuery: string;
-};
-
 const CommandBar = () => {
-	const router = useRouter();
-	const { register, handleSubmit, formState } = useForm<Search>();
-	const searchHandler = (data: Search) => {
-		data.searchQuery = data.searchQuery.trim();
-		if (data.searchQuery.startsWith("http")) {
-			router.push(data.searchQuery);
-		} else {
-			const encodedData = encodeURIComponent(
-				`"site:chegg.com" ${data.searchQuery}`,
-			);
-			router.push(`https://www.google.com/search?q=${encodedData}`);
-		}
-	};
-
 	return (
-		<form
-			className="-mx-[6px] mt-[14px] mb-[2px]"
-			onSubmit={handleSubmit(searchHandler)}
+		<div
+			className="fixed inset-0 z-[650] flex content-start justify-center px-4 pb-4 pt-[calc(13vh_-_0.36px)]"
+			style={{
+				WebkitBoxPack: "center",
+			}}
 		>
-			<div
-				className="flex min-w-0 flex-initial flex-grow select-none flex-row"
-				style={{ WebkitBoxFlex: 1 }}
-			>
-				<div
-					className="m-0 inline-flex h-9 min-w-[36px] flex-shrink-0 flex-grow select-none items-center justify-between whitespace-nowrap rounded border border-[#dfe1e4] px-[9px] py-0 text-xs text-[#3c4149] shadow-[rgb(0_0_0_/_7%)_0px_1px_1px] [transition-property:border,_background-color,_color,_box-shadow,_opacity]"
-					draggable="false"
-					style={{ WebkitBoxFlex: 1 }}
-				>
-					<svg
-						width="16"
-						height="16"
-						viewBox="1 1 13 13"
-						fill="#6B6F76"
-						className=" mr-[10px] inline-flex max-h-[18px] max-w-[18px] items-center justify-center [transition-property:fill,_stroke] "
-					>
-						<path
-							fillRule="evenodd"
-							clipRule="evenodd"
-							d="M9.5 7C9.5 8.38071 8.38071 9.5 7 9.5C5.61929 9.5 4.5 8.38071 4.5 7C4.5 5.61929 5.61929 4.5 7 4.5C8.38071 4.5 9.5 5.61929 9.5 7ZM9.24822 10.3089C8.60751 10.745 7.83353 11 7 11C4.79086 11 3 9.20914 3 7C3 4.79086 4.79086 3 7 3C9.20914 3 11 4.79086 11 7C11 7.83353 10.745 8.60751 10.3089 9.24822L12.7803 11.7197C13.0732 12.0126 13.0732 12.4874 12.7803 12.7803C12.4874 13.0732 12.0126 13.0732 11.7197 12.7803L9.24822 10.3089Z"
-						></path>
-					</svg>
-					<input
-						className="flex h-full flex-initial flex-grow flex-row items-center justify-between font-medium outline-none"
+			<div className=" [box-shadow: rgb(0_0_0/50%)_0px_16px_70px] relative flex h-[400px] min-w-min max-w-[640px] flex-shrink flex-grow transform-none flex-col overflow-hidden rounded-lg bg-[#1d1e2b7f] opacity-[2] will-change-transform [transform-origin:center_center] [backdrop-filter:blur(20px)_saturate(190%)_contrast(70%)_brightness(80%)] [border:0.5px_solid_rgba(82,82,111,0.44)]">
+				<div className="mx-4 mt-4 flex max-w-[calc(100vw-60px)] flex-shrink-0 self-start overflow-hidden text-ellipsis whitespace-nowrap rounded bg-[#7c7ca320] px-2 py-0 leading-[25px] text-[#dcd8fe90]">
+					Command Panel
+				</div>
+				<div>
+					<div
+						className="relative grid h-[62px] flex-shrink-0 items-center [border-bottom:1px_solid_rgba(82,82,111,0.25)] [grid-template-columns:1fr_auto]"
 						style={{
 							WebkitBoxAlign: "center",
-							WebkitBoxPack: "justify",
-							WebkitFlex: 1,
 						}}
-						placeholder="Search or Enter URL..."
-						{...register("searchQuery")}
-					/>
+					>
+						<div
+							className="flex items-center"
+							style={{
+								WebkitBoxAlign: "center",
+							}}
+						>
+							<input className="m-0 h-[62px] w-full appearance-none border-none bg-transparent p-5 text-[#e0e1ec] caret-[rgb(110,94,210)] outline-none [grid-area:1/1/auto/auto]" />
+						</div>
+					</div>
 				</div>
 			</div>
-		</form>
+		</div>
 	);
 };
 

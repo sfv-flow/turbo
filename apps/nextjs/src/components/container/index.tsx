@@ -34,18 +34,21 @@ const MainContainer = ({ children }: { children: React.ReactNode }) => {
 	}
 
 	return (
-		<div
-			className="fixed flex h-full min-h-full w-full flex-row overflow-hidden pr-[env(safe-area-inset-right,0px)] pl-[env(safe-area-inset-left,0px)] text-[#eeeffc] [border-top:none] lg:static lg:z-auto"
-			style={{ WebkitBoxAlign: "stretch" }}
-		>
-			{session && workspaceData && <SideBar workspace={workspaceData} />}
-			<main
-				className="relative flex flex-initial flex-grow flex-col place-items-stretch overflow-auto text-black [scrollbar-gutter:auto]"
-				style={{ WebkitBoxAlign: "stretch", WebkitBoxFlex: 1 }}
+		<>
+			<div
+				className="fixed flex h-full min-h-full w-full flex-row overflow-hidden pr-[env(safe-area-inset-right,0px)] pl-[env(safe-area-inset-left,0px)] text-[#eeeffc] [border-top:none] lg:static lg:z-auto"
+				style={{ WebkitBoxAlign: "stretch" }}
 			>
-				{session && workspaceData && children}
-			</main>
-		</div>
+				{session && workspaceData && <SideBar workspace={workspaceData} />}
+				<main
+					className="relative flex flex-initial flex-grow flex-col place-items-stretch overflow-auto text-black [scrollbar-gutter:auto]"
+					style={{ WebkitBoxAlign: "stretch", WebkitBoxFlex: 1 }}
+				>
+					{session && workspaceData && children}
+				</main>
+			</div>
+			{/* <CommandBar /> */}
+		</>
 	);
 };
 

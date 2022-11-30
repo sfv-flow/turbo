@@ -8,7 +8,7 @@ import { useState } from "react";
 import { trpc } from "../../utils/trpc";
 import UserContextMenu from "../popover/User";
 import WorkspaceContextMenu from "../popover/Workspace";
-import CommandBar from "../commandBar";
+import SearchBar from "./searchBar";
 
 const SideBar = ({
 	workspace,
@@ -117,7 +117,7 @@ const SideBar = ({
 							</Popover.Root>
 						</div>
 					</div>
-					<CommandBar />
+					<SearchBar />
 				</div>
 				{/* Second Section */}
 				<div
