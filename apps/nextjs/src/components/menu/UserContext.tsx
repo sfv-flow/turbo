@@ -4,7 +4,7 @@ import UserContextItem from "./UserContextItem";
 const UserContextMenu = () => {
 	const router = useRouter();
 	return (
-		<div className="fixed z-[600] m-0 [inset:0px_auto_auto_0px] [transform:translate3d(205px,83px,0px)] lg:[transform:translate3d(175px,50px,0px)]">
+		<div className="fixed z-[600] m-0 [inset:0px_auto_auto_0px] [transform:translate3d(200px,93px,0px)] lg:[transform:translate3d(175px,50px,0px)]">
 			<div className="pointer-events-auto rounded-lg border-[0.5px] border-[#dfe1e4] bg-white/50 opacity-[2] shadow-[rgb(0_0_0/9%)_0px_3px_12px] [transform:scale(1)] [transform-origin:0px_0px] [backdrop-filter:blur(12px)_saturate(190%)_contrast(50%)_brightness(130%)]">
 				<div
 					className="m-0 flex min-w-min flex-shrink flex-grow flex-col overflow-hidden py-1 px-0 text-[13px]"
