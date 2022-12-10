@@ -18,7 +18,7 @@ const Home = () => {
 
 	useEffect(() => {
 		if (session && workspace) {
-			router.push(`/${workspace.slug}`);
+			router.replace(`/${workspace.slug}`);
 			return;
 		}
 	}, [router, session, status, workspace]);

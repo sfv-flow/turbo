@@ -3,20 +3,29 @@ import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Loading from "../components/Loading";
 
 const Login = () => {
 	const router = useRouter();
 	const { data: session } = useSession();
-	const { data: workspace, isFetched: workspaceIsFetched } =
-		trpc.workspace.fetchUserWorkspace.useQuery();
-	useEffect(() => {
-		if (session && workspace) {
-			router.push(`/${workspace.slug}`);
-		}
-		if (session && !workspace) {
-			router.push(`/`);
-		}
-	}, [router, session, workspace]);
+	const {
+		data: workspace,
+		isFetching: FetchingWorkspace,
+		isFetched: workspaceIsFetched,
+	} = trpc.workspace.fetchUserWorkspace.useQuery();
+
+	if (!FetchingWorkspace) return <Loading />;
+
+	if (workspace && session) {
+		router.replace(`/${workspace.slug}`);
+		return null;
+	}
+
+	if (!workspace && session) {
+		console.log("no workspace");
+		router.replace(`/`);
+		return null;
+	}
 
 	if (!session && workspaceIsFetched) {
 		const LoginCard = dynamic(() => import("../components/LoginCard"), {

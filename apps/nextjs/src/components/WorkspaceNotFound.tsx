@@ -55,7 +55,7 @@ const WorkspaceNotFound = () => {
 				>
 					<button
 						onClick={() => {
-							router.push(`/${workspace?.slug ? workspace.slug : "/"}`);
+							router.replace(`/${workspace?.slug ? workspace.slug : "/"}`);
 						}}
 						className="m-0 inline-flex h-8 min-w-[32px] flex-shrink-0 select-none items-center justify-center whitespace-nowrap rounded border border-transparent bg-transparent py-0 px-3 text-xs font-medium text-[#d2d3e0] shadow-none outline-none duration-150 [transition-property:border,background-color,color,box-shadow,opacity] hover:bg-[#272832] hover:text-[#EEEFFC] hover:duration-[0]"
 						draggable="false"
