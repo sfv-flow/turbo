@@ -12,10 +12,10 @@
 		"@flow/db": "*",
 		"@trpc/client": "10.0.0-rc.4",
 		"@trpc/server": "10.0.0-rc.4",
-		"superjson": "^1.11.0",
+		"superjson": "^1.12.0",
 		"zod": "^3.19.1"
 	},
 	"devDependencies": {
-		"typescript": "^4.9.3"
+		"typescript": "^4.9.4"
 	}
 }
