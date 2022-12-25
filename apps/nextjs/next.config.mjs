@@ -9,10 +9,8 @@
 const config = {
 	reactStrictMode: true,
 	swcMinify: true,
-	experimental: {
-		// Enables hot-reload and easy integration for local packages
-		transpilePackages: ["@flow/api", "@flow/auth", "@flow/db"],
-	},
+	// Enables hot-reload and easy integration for local packages
+	transpilePackages: ["@flow/api", "@flow/auth", "@flow/db"],
 	// We already do linting on GH actions
 	eslint: {
 		ignoreDuringBuilds: !!process.env.CI,
