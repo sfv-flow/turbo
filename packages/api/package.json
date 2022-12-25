@@ -10,10 +10,10 @@
 	"dependencies": {
 		"@flow/auth": "*",
 		"@flow/db": "*",
-		"@trpc/client": "10.0.0-rc.4",
-		"@trpc/server": "10.0.0-rc.4",
-		"superjson": "^1.12.0",
-		"zod": "^3.19.1"
+		"@trpc/client": "10.7.0",
+		"@trpc/server": "10.7.0",
+		"superjson": "^1.12.1",
+		"zod": "^3.20.2"
 	},
 	"devDependencies": {
 		"typescript": "^4.9.4"
