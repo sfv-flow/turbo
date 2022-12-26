@@ -1,6 +1,17 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 const SearchBar = () => {
+	const router = useRouter();
 	return (
-		<button className="-mx-[6px] mt-[14px] mb-[2px]">
+		<Link
+			className="-mx-[6px] mt-[14px] mb-[2px]"
+			href={{
+				pathname: "/[slug]",
+				query: { slug: router.query.slug },
+			}}
+			draggable="false"
+		>
 			<div
 				className="flex min-w-0 flex-initial flex-grow select-none flex-row"
 				style={{ WebkitBoxFlex: 1 }}
@@ -25,18 +36,18 @@ const SearchBar = () => {
 					</svg>
 
 					<div
-						className="flex h-full flex-initial flex-grow flex-row items-center justify-between font-medium outline-none"
+						className="flex h-full flex-initial flex-grow flex-row items-center justify-between outline-none"
 						style={{
 							WebkitBoxAlign: "center",
 							WebkitBoxPack: "justify",
 							WebkitFlex: 1,
 						}}
 					>
-						<span>Search or Enter URL</span>
+						<span className="font-medium">Search</span>
 					</div>
 				</div>
 			</div>
-		</button>
+		</Link>
 	);
 };
 
