@@ -12,7 +12,7 @@ const Join = () => {
 	});
 	// const { data: workspace, isFetching: isFetchingWorkspace } =
 	// 	trpc.workspace.fetchUserWorkspace.useQuery({} as unknown as void, {
-	// 		refetchOnWindowFocus: false,
+	// 			staleTime: 1000 * 60 * 10, // 10 minutes
 	// 	});
 
 	if (status === "loading") return <Loading />;

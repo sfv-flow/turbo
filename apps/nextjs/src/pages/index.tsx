@@ -13,9 +13,12 @@ const Home = () => {
 	const { data: session, status } = useSession();
 	const { data: workspace, isFetched: workspaceIsFetched } =
 		trpc.workspace.fetchUserWorkspace.useQuery({} as unknown as void, {
-			refetchOnWindowFocus: false,
+			staleTime: 1000 * 60 * 10, // 10 minutes
 		});
-
+	const CreateWorkSpaceComponent = dynamic(
+		() => import("../components/CreateWorkspace"),
+		{ ssr: true },
+	);
 	useEffect(() => {
 		if (session && workspace) {
 			router.replace(`/${workspace.slug}`);
@@ -26,10 +29,6 @@ const Home = () => {
 	if (status === "loading" || !workspaceIsFetched) return <Loading />;
 
 	if (session && !workspace) {
-		const CreateWorkSpaceComponent = dynamic(
-			() => import("../components/CreateWorkspace"),
-			{ ssr: true },
-		);
 		return <CreateWorkSpaceComponent />;
 	}
 	if (!session && !workspace) {

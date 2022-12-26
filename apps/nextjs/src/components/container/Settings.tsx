@@ -20,7 +20,7 @@ const SettingsContainer = ({ children }: { children: React.ReactNode }) => {
 				workspaceSlug: router.isReady ? (router.query.slug as string) : "",
 			},
 			{
-				refetchOnWindowFocus: false,
+				staleTime: 1000 * 60 * 10, // 10 minutes
 			},
 		);
 

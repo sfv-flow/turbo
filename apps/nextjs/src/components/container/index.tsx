@@ -20,7 +20,7 @@ const MainContainer = ({ children }: { children: React.ReactNode }) => {
 				workspaceSlug: router.isReady ? (router.query.slug as string) : "",
 			},
 			{
-				refetchOnWindowFocus: false,
+				staleTime: 1000 * 60 * 10, // 10 minutes
 			},
 		);
 
@@ -47,7 +47,6 @@ const MainContainer = ({ children }: { children: React.ReactNode }) => {
 					{session && workspaceData && children}
 				</main>
 			</div>
-			{/* <CommandBar /> */}
 		</>
 	);
 };
