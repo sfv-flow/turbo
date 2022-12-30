@@ -1,5 +1,5 @@
 {
-	"name": "@flow/nextjs",
+	"name": "@flow/main",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
