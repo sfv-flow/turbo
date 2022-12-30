@@ -95,7 +95,7 @@ _We do not recommend deploying a SQLite database on serverless environments sinc
 
 Let's deploy the Next.js application to [Vercel](https://vercel.com/). If you have ever deployed a Turborepo app there, the steps are quite straightforward. You can also read the [official Turborepo guide](https://vercel.com/docs/concepts/monorepos/turborepo) on deploying to Vercel.
 
-1. Create a new project on Vercel, select the `apps/nextjs` folder as the root directory and apply the following build settings:
+1. Create a new project on Vercel, select the `apps/main` folder as the root directory and apply the following build settings:
    <img width="907" alt="CleanShot 2022-09-03 at 22 51 25@2x" src="https://user-images.githubusercontent.com/51714798/188287309-e6ff4cb9-827a-4e50-83ed-e0953d7752f9.png">
 
 2. Add your `DATABASE_URL` environment variable.

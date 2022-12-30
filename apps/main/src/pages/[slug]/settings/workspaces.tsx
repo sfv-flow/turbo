@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { ReactElement } from "react";
-import Container from "../../../components/container";
 import SettingsContainer from "../../../components/container/Settings";
 
 const WorkspaceSettings = () => {
